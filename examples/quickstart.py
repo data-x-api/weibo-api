@@ -21,7 +21,7 @@ SOURCE = "gh-weibo-api"
 SIGN_UP = f"https://dataxapi.com/zh/signin/?button={SOURCE}"
 ENDPOINT = "weibo.posts.search"
 PARAM = "query"
-PRICE = Decimal("0.002")  # 现价见 https://dataxapi.com/zh/apis/weibo/posts/search/
+PRICE = Decimal("0.002")  # 现价见 https://dataxapi.com/zh/apis/weibo/posts/search/?ref=gh-weibo-api
 
 
 def flatten(item: dict, prefix: str = "") -> dict:

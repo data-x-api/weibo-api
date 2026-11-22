@@ -2,49 +2,51 @@
 
 **微博数据 API · 微博搜索 · 微博评论采集 · 微博热搜榜 · 微博用户主页**
 
-这个仓库是 [DataXAPI](https://dataxapi.com/zh/?ref=gh-weibo-api) 的微博接口说明和能直接跑的脚本：11 个接口，一把 Key，按次付费，$0.002 起，**出错不收费**。不用登录平台账号，不用 Cookie，不开浏览器。
+这个仓库是 [DataXAPI](https://dataxapi.com/zh/?ref=gh-weibo-api) 的微博接口说明和能直接跑的脚本：13 个接口，一把 Key，按次付费，$0.002 起，**出错不收费**。不用登录平台账号，不用 Cookie，不开浏览器。
 
 [免费拿 Key：试用最多 333 次，不用绑卡](https://dataxapi.com/zh/signin/?button=gh-weibo-api) · [全部接口文档](https://dataxapi.com/zh/apis/?ref=gh-weibo-api) · [接进 AI（MCP）](#接进-aimcp) · [English](#english)
 
 最低充 $10，余额不过期；支持支付宝、微信支付和银行卡。
 
-## 全部 11 个接口
+## 全部 13 个接口
 
 ### 内容
 
 | 接口 | 拿到什么 | 价格 | 编号 |
 |---|---|---|---|
-| [微博实时搜索](https://dataxapi.com/zh/apis/weibo/posts/search/) | 按搜索词取一页微博，新发的在前：正文（长微博在这里是截短的）、作者和粉丝数、点赞、评论、转发数、视频播放数、图片、话题。 | $0.002 一次 | `weibo.posts.search` |
-| [微博评论](https://dataxapi.com/zh/apis/weibo/posts/comments/list/) | 按微博编号取一页评论：正文、评论者、点赞数、回复数、发布时间、IP 属地。 | $0.002 一次 | `weibo.posts.comments.list` |
-| [微博详情](https://dataxapi.com/zh/apis/weibo/posts/get/) | 按微博编号取一条微博：全文（长微博也是全文）、作者、点赞、评论、转发、阅读数（视频微博是播放数）、图片、话题、IP 属地。 | $0.002 一次 | `weibo.posts.get` |
-| [微博点赞用户](https://dataxapi.com/zh/apis/weibo/posts/likers/list/) | 按微博编号取最近给这条微博点赞的账号，一次约 50 个：昵称、简介、头像、是否认证和认证类型、粉丝数、关注数、微博数，资料里填的性别和地区。 | $0.002 一次 | `weibo.posts.likers.list` |
+| [微博实时搜索](https://dataxapi.com/zh/apis/weibo/posts/search/?ref=gh-weibo-api) | 按搜索词取一页微博，新发的在前：正文（长微博在这里是截短的）、作者和粉丝数、点赞、评论、转发数、视频播放数、图片、话题。 | $0.002 一次 | `weibo.posts.search` |
+| [微博评论](https://dataxapi.com/zh/apis/weibo/posts/comments/list/?ref=gh-weibo-api) | 按微博编号取一页评论：正文、评论者、点赞数、回复数、发布时间、IP 属地。 | $0.002 一次 | `weibo.posts.comments.list` |
+| [微博详情](https://dataxapi.com/zh/apis/weibo/posts/get/?ref=gh-weibo-api) | 按微博编号取一条微博：全文（长微博也是全文）、作者、点赞、评论、转发、阅读数（视频微博是播放数）、图片、话题、IP 属地。 | $0.002 一次 | `weibo.posts.get` |
+| [微博视频转文字（文案提取、逐字稿）](https://dataxapi.com/zh/apis/weibo/posts/transcript/get/?ref=gh-weibo-api) | 给一条带视频的微博的链接、分享文字或编号，返回视频里说的话：全文、每一句的起止时间和现成的 SRT 字幕，连同正文、作者和时长；可以区分说话人。每次收费，识别语音的另按视频分钟数收，没人说话不收。只接 5 分钟以内的视频。超过 5 分钟、2 小时以内的视频先回一个凭证（job），过一会儿带着它再调这个接口取文字，价格一样，只在取到文字时收。 | $0.002 一次 | `weibo.posts.transcript.get` |
+| [微博点赞用户](https://dataxapi.com/zh/apis/weibo/posts/likers/list/?ref=gh-weibo-api) | 按微博编号取最近给这条微博点赞的账号，一次约 50 个：昵称、简介、头像、是否认证和认证类型、粉丝数、关注数、微博数，资料里填的性别和地区。 | $0.002 一次 | `weibo.posts.likers.list` |
+| [微博视频和图片下载地址](https://dataxapi.com/zh/apis/weibo/posts/media/get/?ref=gh-weibo-api) | 给一条微博的编号、链接或分享文字，返回视频的各档清晰度（到 4K 的有几档给几档，带宽高、码率、大小、是否带水印和过期时间）、封面，或者每张图片的最大尺寸地址；只对视频微博和图片微博，纯文字的按没有文件返回。地址不用带请求头，过期了再调一次即可。 | $0.002 一次 | `weibo.posts.media.get` |
 
 ### 热榜和趋势
 
 | 接口 | 拿到什么 | 价格 | 编号 |
 |---|---|---|---|
-| [微博热搜榜](https://dataxapi.com/zh/apis/weibo/trends/list/) | 取微博当前的热搜榜，50 个词，带名次、热度和标签（新、热等）。 | $0.002 一次 | `weibo.trends.list` |
+| [微博热搜榜](https://dataxapi.com/zh/apis/weibo/trends/list/?ref=gh-weibo-api) | 取微博当前的热搜榜，50 个词，带名次、热度和标签（新、热等）。 | $0.002 一次 | `weibo.trends.list` |
 
 ### 评论
 
 | 接口 | 拿到什么 | 价格 | 编号 |
 |---|---|---|---|
-| [微博评论回复](https://dataxapi.com/zh/apis/weibo/comments/replies/list/) | 按评论编号取一页回复：正文、回复者、点赞数、回复的是哪一条、发布时间、IP 属地。 | $0.002 一次 | `weibo.comments.replies.list` |
+| [微博评论回复](https://dataxapi.com/zh/apis/weibo/comments/replies/list/?ref=gh-weibo-api) | 按评论编号取一页回复：正文、回复者、点赞数、回复的是哪一条、发布时间、IP 属地。 | $0.002 一次 | `weibo.comments.replies.list` |
 
 ### 账号
 
 | 接口 | 拿到什么 | 价格 | 编号 |
 |---|---|---|---|
-| [微博用户粉丝列表](https://dataxapi.com/zh/apis/weibo/users/followers/list/) | 按用户编号取一页关注该微博用户的账号，每页 20 个：昵称、简介、头像、是否认证和认证类型、粉丝数、关注数、微博数、注册时间，资料里填的性别和地区。 | $0.002 一次 | `weibo.users.followers.list` |
-| [微博用户资料](https://dataxapi.com/zh/apis/weibo/users/get/) | 按用户编号取微博用户资料：昵称、简介、头像、是否认证和认证说明、粉丝数、关注数、微博数，主页上的转评赞总数、获赞总数，性别和地区。 | $0.002 一次 | `weibo.users.get` |
-| [微博用户微博](https://dataxapi.com/zh/apis/weibo/users/posts/list/) | 按用户编号取一页该用户主页上的微博（原创和转发），新的在前：正文（长微博在这里是截短的）、点赞、评论、转发数、视频播放数、图片、话题、IP 属地、是否置顶。 | $0.002 一次 | `weibo.users.posts.list` |
-| [微博用户搜索](https://dataxapi.com/zh/apis/weibo/users/search/) | 按搜索词取一页微博用户：编号、昵称、头像、主页链接。 | $0.002 一次 | `weibo.users.search` |
+| [微博用户粉丝列表](https://dataxapi.com/zh/apis/weibo/users/followers/list/?ref=gh-weibo-api) | 按用户编号取一页关注该微博用户的账号，每页 20 个：昵称、简介、头像、是否认证和认证类型、粉丝数、关注数、微博数、注册时间，资料里填的性别和地区。 | $0.002 一次 | `weibo.users.followers.list` |
+| [微博用户资料](https://dataxapi.com/zh/apis/weibo/users/get/?ref=gh-weibo-api) | 按用户编号取微博用户资料：昵称、简介、头像、是否认证和认证说明、粉丝数、关注数、微博数，主页上的转评赞总数、获赞总数，性别和地区。 | $0.002 一次 | `weibo.users.get` |
+| [微博用户微博](https://dataxapi.com/zh/apis/weibo/users/posts/list/?ref=gh-weibo-api) | 按用户编号取一页该用户主页上的微博（原创和转发），新的在前：正文（长微博在这里是截短的）、点赞、评论、转发数、视频播放数、图片、话题、IP 属地、是否置顶。 | $0.002 一次 | `weibo.users.posts.list` |
+| [微博用户搜索](https://dataxapi.com/zh/apis/weibo/users/search/?ref=gh-weibo-api) | 按搜索词取一页微博用户：编号、昵称、头像、主页链接。 | $0.002 一次 | `weibo.users.search` |
 
 ### 备用版：原接口取不到时改调
 
 | 接口 | 拿到什么 | 价格 | 编号 |
 |---|---|---|---|
-| [微博热搜榜（备用版）](https://dataxapi.com/zh/apis/weibo/backup/trends/list/) | 微博热搜榜的备用版，原接口取不到时改调：参数和返回相同，价格更高。 | $0.03 一次 | `weibo.backup.trends.list` |
+| [微博热搜榜（备用版）](https://dataxapi.com/zh/apis/weibo/backup/trends/list/?ref=gh-weibo-api) | 微博热搜榜的备用版，原接口取不到时改调：参数和返回相同，价格更高。 | $0.03 一次 | `weibo.backup.trends.list` |
 
 ## 真实返回长什么样
 
@@ -162,4 +164,4 @@ No platform account, cookie or QR login. Paid per call from $0.002; errors are n
 
 MIT
 
-<sub>接口和价格取自 DataXAPI 的目录 720fc3ea8dadb865、价格版本 19；以 [dataxapi.com/zh/apis](https://dataxapi.com/zh/apis/?ref=gh-weibo-api) 为准。</sub>
+<sub>接口和价格取自 DataXAPI 的目录 dc959672dd18e2d0、价格版本 21；以 [dataxapi.com/zh/apis](https://dataxapi.com/zh/apis/?ref=gh-weibo-api) 为准。</sub>
