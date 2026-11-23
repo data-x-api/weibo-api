@@ -17,7 +17,7 @@
 | [微博实时搜索](https://dataxapi.com/zh/apis/weibo/posts/search/?ref=gh-weibo-api) | 按搜索词取一页微博，新发的在前：正文（长微博在这里是截短的）、作者和粉丝数、点赞、评论、转发数、视频播放数、图片、话题。 | $0.002 一次 | `weibo.posts.search` |
 | [微博评论](https://dataxapi.com/zh/apis/weibo/posts/comments/list/?ref=gh-weibo-api) | 按微博编号取一页评论：正文、评论者、点赞数、回复数、发布时间、IP 属地。 | $0.002 一次 | `weibo.posts.comments.list` |
 | [微博详情](https://dataxapi.com/zh/apis/weibo/posts/get/?ref=gh-weibo-api) | 按微博编号取一条微博：全文（长微博也是全文）、作者、点赞、评论、转发、阅读数（视频微博是播放数）、图片、话题、IP 属地。 | $0.002 一次 | `weibo.posts.get` |
-| [微博视频转文字（文案提取、逐字稿）](https://dataxapi.com/zh/apis/weibo/posts/transcript/get/?ref=gh-weibo-api) | 给一条带视频的微博的链接、分享文字或编号，返回视频里说的话：全文、每一句的起止时间和现成的 SRT 字幕，连同正文、作者和时长；可以区分说话人。每次收费，识别语音的另按视频分钟数收，没人说话不收。只接 5 分钟以内的视频。超过 5 分钟、2 小时以内的视频先回一个凭证（job），过一会儿带着它再调这个接口取文字，价格一样，只在取到文字时收。 | $0.002 一次 | `weibo.posts.transcript.get` |
+| [微博视频转文字（文案提取、逐字稿）](https://dataxapi.com/zh/apis/weibo/posts/transcript/get/?ref=gh-weibo-api) | 给一条带视频的微博的链接、分享文字或编号，返回视频里说的话：全文、每一句的起止时间和现成的 SRT 字幕，连同正文、作者和时长；可以区分说话人。每次收费，识别语音的另按视频分钟数收，没人说话不收。5 分钟以内的视频直接返回文字；超过 5 分钟、2 小时以内的先回一个凭证（job），过一会儿带着它再调这个接口取文字，按实际分钟数收，只在取到文字时收。 | $0.002 一次 | `weibo.posts.transcript.get` |
 | [微博点赞用户](https://dataxapi.com/zh/apis/weibo/posts/likers/list/?ref=gh-weibo-api) | 按微博编号取最近给这条微博点赞的账号，一次约 50 个：昵称、简介、头像、是否认证和认证类型、粉丝数、关注数、微博数，资料里填的性别和地区。 | $0.002 一次 | `weibo.posts.likers.list` |
 | [微博视频和图片下载地址](https://dataxapi.com/zh/apis/weibo/posts/media/get/?ref=gh-weibo-api) | 给一条微博的编号、链接或分享文字，返回视频的各档清晰度（到 4K 的有几档给几档，带宽高、码率、大小、是否带水印和过期时间）、封面，或者每张图片的最大尺寸地址；只对视频微博和图片微博，纯文字的按没有文件返回。地址不用带请求头，过期了再调一次即可。 | $0.002 一次 | `weibo.posts.media.get` |
 
@@ -164,4 +164,4 @@ No platform account, cookie or QR login. Paid per call from $0.002; errors are n
 
 MIT
 
-<sub>接口和价格取自 DataXAPI 的目录 dc959672dd18e2d0、价格版本 21；以 [dataxapi.com/zh/apis](https://dataxapi.com/zh/apis/?ref=gh-weibo-api) 为准。</sub>
+<sub>接口和价格取自 DataXAPI 的目录 e43c3e964bcc3fc3、价格版本 21；以 [dataxapi.com/zh/apis](https://dataxapi.com/zh/apis/?ref=gh-weibo-api) 为准。</sub>
